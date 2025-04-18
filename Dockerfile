@@ -6,12 +6,13 @@ FROM node:18-slim
 WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json (if available)
-# This step leverages Docker layer caching
+# Using package-lock.json with npm install is still recommended for locking versions
 COPY package*.json ./
 
-# Install app dependencies using a clean install for better reproducibility
+# Install app dependencies
+# Using npm install instead of npm ci (less strict, doesn't require package-lock.json)
 # Use --only=production to avoid installing devDependencies
-RUN npm ci --only=production
+RUN npm install --only=production --legacy-peer-deps
 
 # Bundle app source code inside the Docker image
 COPY . .
