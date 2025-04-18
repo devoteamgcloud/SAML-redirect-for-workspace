@@ -1,0 +1,12 @@
+{
+  "name": "saml-redirect-for-workspacer",
+  "description": "Cloud Run function to perform a GET redirect and removing payload that is blocked by some website.",
+  "options": {
+    "allow-unauthenticated": true,
+    "memory": "256Mi",
+    "cpu": "1"
+  },
+  "build": {
+    "skip": false
+  }
+}
